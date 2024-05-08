@@ -3,8 +3,10 @@ build:
     - apt update -y
     - apt install python3 -y
     - apt install python3-venv -y
-    - python3 -m venv flask_env
-    - pip3 install flask
+    - mkdir -p /builds/cicd-groups/flaskapplication-cicd/flask_env  # Ensure the directory exists
+    - python3 -m venv /builds/cicd-groups/flaskapplication-cicd/flask_env
+    - source /builds/cicd-groups/flaskapplication-cicd/flask_env/bin/activate
+    - pip3 install --upgrade pip
 
 deploy:
   script:
