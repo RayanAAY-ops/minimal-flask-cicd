@@ -1,0 +1,11 @@
+build:
+  script:
+    - apt update -y
+    - apt install python3 -y
+    - python3 -m venv flask_env
+    - pip3 install flask
+
+deploy:
+  script:
+    - apt update -y
+    - flask --app main.py run
