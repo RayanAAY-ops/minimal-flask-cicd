@@ -17,5 +17,6 @@ deploy:
   stage: deploy_stage
   script:
     - apt update -y
+    - python3 -m venv venv
     - source venv/bin/activate
     - flask --app main.py run
