@@ -1,4 +1,9 @@
+stages:
+  - build_stage
+  - deploy_stage
+
 build:
+  stage: build_stage
   script:
     - export PYTHONPATH=.
     - export FLASK_APP=web
@@ -9,6 +14,7 @@ build:
     - pip3 install Flask
 
 deploy:
+  stage: deploy_stage
   script:
     - apt update -y
     - flask --app main.py run
