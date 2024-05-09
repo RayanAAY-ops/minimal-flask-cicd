@@ -5,17 +5,16 @@ stages:
 build:
   stage: build_stage
   script:
-    - export PYTHONPATH=.
-    - export FLASK_APP=web
-    - apt-get update -qy
-    - apt-get install -y python3-dev python3-pip python3-venv
+    - docker --version
+    - docker build -t pyapp .
+  tags:
+    - ubuntu
+    - server
 
 deploy:
   stage: deploy_stage
   script:
-    - apt update -y
-    - python3 -m venv venv
-    - source venv/bin/activate
-    - pip3 install Flask
-    # Ensure your current working directory is set to where your Flask application resides
-    - flask run --host=0.0.0.0
+    - docker run -d --name pythoncontainer -p 80:8080 pyapp
+  tags:
+    - ubuntu
+    - server
