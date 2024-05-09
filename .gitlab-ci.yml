@@ -8,13 +8,14 @@ build:
     - docker --version
     - docker build -t pyapp .
   tags:
+    - flask-server
     - ubuntu
-    - server
+    
 
 deploy:
   stage: deploy_stage
   script:
     - docker run -d --name pythoncontainer -p 80:8080 pyapp
   tags:
+    - flask-server
     - ubuntu
-    - server
