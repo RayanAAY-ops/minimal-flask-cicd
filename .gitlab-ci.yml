@@ -16,6 +16,7 @@ deploy:
   stage: deploy_stage
   script:
     - docker run -d -p 5000:5000 python-docker
+    - docker ps
   tags:
     - flask-server
     - ubuntu
