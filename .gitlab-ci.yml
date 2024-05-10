@@ -6,7 +6,7 @@ build:
   stage: build_stage
   script:
     - docker --version
-    - docker build -t pyapp .
+    - docker build --tag python-docker .
   tags:
     - flask-server
     - ubuntu
@@ -15,7 +15,7 @@ build:
 deploy:
   stage: deploy_stage
   script:
-    - docker run -d --name pythoncontainer -p 80:8080 pyapp
+    - docker run -d -p 5000:5000 python-docker
   tags:
     - flask-server
     - ubuntu
